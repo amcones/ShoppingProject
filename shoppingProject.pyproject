@@ -1,3 +1,3 @@
 {
-    "files": ["dao/__init__.py","dao/check_login.py","images/我的.svg","images/密码.svg","main.qml","view/login_backend.py","images/线下购物.svg","util/__init__.py","view/__init__.py","util/db_conn.py","main.py","db/market.sqlite","MainPage.qml"]
+    "files": ["main.qml","main.py","util/__init__.py","util/db_conn.py","view/__init__.py","view/login_backend.py","db/market.sqlite","MainPage.qml","images/我的.svg","dao/check_login.py","dao/__init__.py","MainContent.qml","ItemContainer.qml","images/线下购物.svg","images/密码.svg","aboutDialog.qml"]
 }

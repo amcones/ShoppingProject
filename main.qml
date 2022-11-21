@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls 6.3
+import Qt5Compat.GraphicalEffects
 
 Window {
     id: loginWindow
@@ -43,16 +44,6 @@ Window {
             }
             onPressed: {
                 loginBackend.checkLogin(accountTextField.text,passwordTextField.text)
-
-                //                if(info=="-1"){
-                //                    loginInfoText.text="用户不存在"
-                //                }
-                //                else if(info==="0"){
-                //                    loginInfoText.text="用户名或密码错误"
-                //                }
-                //                else{
-
-                //                }
             }
         }
 
@@ -60,6 +51,7 @@ Window {
             id: accountTextField
             width: 200
             height: 30
+            focus: true
             color: "#000000"
             anchors.top: parent.top
             horizontalAlignment: Text.AlignLeft
@@ -67,6 +59,8 @@ Window {
             font.pointSize: 14
             placeholderTextColor: "#b8000000"
             placeholderText: qsTr("请输入账号")
+            Keys.onReturnPressed: passwordTextField.focus=true // Enter key
+            Keys.onEnterPressed: passwordTextField.focus=true // Numpad enter key
             verticalAlignment: Text.AlignVCenter
             anchors.horizontalCenter: parent.horizontalCenter
             leftPadding: 30
@@ -116,6 +110,8 @@ Window {
                 border.width: passwordTextField.focus?2:1
                 radius: 5
             }
+            Keys.onReturnPressed: loginBackend.checkLogin(accountTextField.text,passwordTextField.text) // Enter key
+            Keys.onEnterPressed: loginBackend.checkLogin(accountTextField.text,passwordTextField.text) // Numpad enter key
 
             Image {
                 id: image2
@@ -181,7 +177,18 @@ Window {
             anchors.topMargin: 50
             anchors.horizontalCenter: parent.horizontalCenter
             fillMode: Image.PreserveAspectFit
+
         }
+
+        DropShadow
+            {
+                anchors.fill: image
+                horizontalOffset: -2
+                verticalOffset: 5
+                radius: 8.0
+                color: "#6d6fc6ff"
+                source: image
+            }
 
         Text {
             id: text2
@@ -222,8 +229,31 @@ Window {
         }
         function onSuccess(account,isadmin){
             loginInfoText.text=""
-            print(account)
+            var component = Qt.createComponent("MainPage.qml")
+            print(component.errorString())
+            if(component.status === Component.Ready){
+                var win = component.createObject()
+                win.account = account
+                win.isadmin=isadmin
+                win.loginwin=loginWindow
+                win.show()
+                visible=false
+            }
         }
+    }
+
+    Image {
+        id: image3
+        width: 100
+        height: 60
+        anchors.left: parent.left
+        anchors.top: parent.top
+        source: "images/logo.png"
+        anchors.topMargin: 5
+        anchors.leftMargin: 15
+        sourceSize.height: 300
+        sourceSize.width: 500
+        fillMode: Image.PreserveAspectFit
     }
 
 
@@ -231,7 +261,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:3}D{i:7}D{i:5}D{i:10}D{i:8}D{i:11}D{i:12}D{i:1}D{i:14}
-D{i:15}D{i:16}D{i:13}
+    D{i:0;formeditorZoom:0.9}
 }
 ##^##*/
