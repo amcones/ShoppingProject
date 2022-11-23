@@ -4,20 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b527b104-3043-4fcc-8a45-d66606188c84" name="变更" comment="feat: completed login">
-      <change afterPath="$PROJECT_DIR$/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/logout.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/个人.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/举报.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/代发货.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/店家.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/放大镜.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/购物车.svg" afterDir="false" />
+    <list default="true" id="b527b104-3043-4fcc-8a45-d66606188c84" name="变更" comment="feat: completed v1.0.0">
+      <change afterPath="$PROJECT_DIR$/ItemControl.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemManageContent.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserManageContent.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dao/select_items.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dao/update_items.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/关闭.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/newItemDialog.qml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/main_content_backend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/update_item_backend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/img_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/log_util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/2fbead54-4871-4ddc-a0ec-880216bd0128.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2fbead54-4871-4ddc-a0ec-880216bd0128.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemContainer.qml" beforeDir="false" afterPath="$PROJECT_DIR$/ItemContainer.qml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainContent.qml" beforeDir="false" afterPath="$PROJECT_DIR$/MainContent.qml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPage.qml" beforeDir="false" afterPath="$PROJECT_DIR$/MainPage.qml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.qml" beforeDir="false" afterPath="$PROJECT_DIR$/main.qml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dao/check_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/dao/check_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/market.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db/market.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingProject.pyproject" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingProject.pyproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingProject.pyproject.user" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingProject.pyproject.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/login_backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/login_backend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +79,33 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/service" />
+      <recent name="$PROJECT_DIR$/service" />
       <recent name="$PROJECT_DIR$/dao" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="ShoppingProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,6 +117,8 @@
       <updated>1668912374850</updated>
       <workItem from="1668912376412" duration="12810000" />
       <workItem from="1668993642255" duration="1594000" />
+      <workItem from="1669044199931" duration="21019000" />
+      <workItem from="1669184871345" duration="5444000" />
     </task>
     <task id="LOCAL-00001" summary="feat: completed login">
       <created>1668957924651</created>
@@ -89,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668957924651</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: completed main page">
+      <created>1669047974817</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669047974817</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,10 +154,35 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat: completed login" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: completed login" />
+    <MESSAGE value="feat: completed main page" />
+    <MESSAGE value="feat: completed v1.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: completed v1.0.0" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/service/main_content_backend.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/service/main_content_backend.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/service/main_content_backend.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ShoppingProject$main_content_backend.coverage" NAME="main_content_backend 覆盖结果" MODIFIED="1669183365140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/service" />
     <SUITE FILE_PATH="coverage/ShoppingProject$login_backend.coverage" NAME="login_backend 覆盖结果" MODIFIED="1668994032834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/view" />
-    <SUITE FILE_PATH="coverage/ShoppingProject$main.coverage" NAME="main 覆盖结果" MODIFIED="1669000752357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ShoppingProject$log_util.coverage" NAME="log_util 覆盖结果" MODIFIED="1669188046816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
+    <SUITE FILE_PATH="coverage/ShoppingProject$main.coverage" NAME="main 覆盖结果" MODIFIED="1669190155867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -5,6 +5,14 @@ Item {
     id: mainContainerItem
     width: 900
     height: 900
+    property alias searchBarContainerRect: searchBarContainerRect
+    property string user
+    Component.onCompleted:{
+        itemFlow.resetItems()
+        mainContentBackend.selectAllItems()
+    }
+
+
     Rectangle {
         id: contentRect
         color: "#ffffff"
@@ -35,9 +43,25 @@ Item {
                 anchors.topMargin: 0
 
                 TextField {
-                    id: textField
+                    id: searchTextField
                     x: 50
                     y: 30
+                    function showSearchResult()
+                    {
+                        itemFlow.resetItems()
+                        mainContentBackend.searchItems(searchTextField.text)
+                    }
+                    Keys.onReturnPressed: showSearchResult() // Enter key
+                    Keys.onEnterPressed: showSearchResult() // Numpad enter
+
+                    onTextChanged: {
+                        if(searchTextField.text.length===0){
+                            //itemFlow.resetItems()
+                            //mainContentBackend.selectAllItems()
+
+                        }
+                    }
+
                     color: "#000000"
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -77,6 +101,9 @@ Item {
                         background: Rectangle{
                             radius:10
                             color: searchBtn.hovered?searchBtn.pressed?"#ff000000":"#aa000000":"#ee000000"
+                        }
+                        onPressed: {
+                            searchTextField.showSearchResult()
                         }
                     }
                 }
@@ -137,7 +164,7 @@ Item {
                         x: 67
                         width: 81
                         height: 19
-                        text: qsTr("Admin")
+                        text: user
                         anchors.verticalCenter: parent.verticalCenter
                         font.pixelSize: 16
                     }
@@ -155,7 +182,7 @@ Item {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             clip: true
-            contentHeight: flow1.height
+            contentHeight: itemFlow.height
             contentWidth: flickable.width
             anchors.rightMargin: 0
             anchors.leftMargin: 0
@@ -163,7 +190,7 @@ Item {
             anchors.topMargin: 0
             ScrollBar.vertical: ScrollBar { id: scrollBar ; visible: true; anchors.top: parent.top; anchors.bottom: parent.bottom; active: true; clip: false; anchors.bottomMargin: 0;anchors.topMargin: 0 }
             Flow {
-                id: flow1
+                id: itemFlow
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.top
@@ -172,44 +199,32 @@ Item {
                 spacing: 5
                 anchors.rightMargin: 0
 
-                ItemContainer {
-                    id: itemContainer
-                }
-
-                ItemContainer {
-                    id: itemContainer1
-                }
-
-                ItemContainer {
-                    id: itemContainer2
-                }
-
-                ItemContainer {
-                    id: itemContainer3
-                }
-
-                ItemContainer {
-                    id: itemContainer4
-                }
-
-                ItemContainer {
-                    id: itemContainer5
-                }
-
-                ItemContainer {
-                    id: itemContainer6
-                }
-
-                ItemContainer {
-                    id: itemContainer7
-                }
-
-                ItemContainer {
-                    id: itemContainer8
+                function resetItems(){
+                        for(var i = itemFlow.children.length; i > 0 ; i--) {
+                            itemFlow.children[i-1].destroy()
+                            print("销毁了一个孩子")
+                        }
                 }
             }
         }
 
+        Connections{
+            target: mainContentBackend
+
+            function onSelectSuccess(id,name,count,price,info,img){
+                var component = Qt.createComponent("ItemContainer.qml")
+                print(component.errorString())
+                if(component.status === Component.Ready){
+                    var itemContainer = component.createObject(itemFlow,{"width":280})
+                    itemContainer.itemId = id
+                    itemContainer.itemName = name
+                    itemContainer.itemPrice = price
+                    itemContainer.itemInfo = info
+                    itemContainer.itemImage = img
+                }
+                component.destroy()
+            }
+        }
 
     }
 }

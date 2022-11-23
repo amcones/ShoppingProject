@@ -6,6 +6,12 @@ Item {
     width: 280
     height: 430
 
+    property int itemId
+    property string itemName
+    property double itemPrice
+    property string itemInfo
+    property string itemImage
+
     DropShadow{
         anchors.fill: itemContainerRect
         radius: 10.0
@@ -29,7 +35,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            source: "images/iphone14pro.png"
+            source: itemImage.length > 0 ? "data:image/png;base64," + itemImage : ""
             anchors.rightMargin: 20
             anchors.leftMargin: 20
             sourceSize.height: 300
@@ -40,7 +46,7 @@ Item {
 
         Text {
             id: text1
-            text: qsTr("iPhone 14 Pro")
+            text: qsTr(itemName)
             anchors.top: image.bottom
             font.pixelSize: 20
             anchors.topMargin: 10
@@ -49,7 +55,7 @@ Item {
 
         Text {
             id: text2
-            text: qsTr("RMB 7999")
+            text: qsTr("RMB "+itemPrice)
             anchors.top: text1.bottom
             font.pixelSize: 12
             anchors.topMargin: 5
@@ -60,7 +66,7 @@ Item {
             id: text3
             width: 188
             height: 58
-            text: qsTr("iPhone 巅峰之作")
+            text: qsTr(itemInfo)
             anchors.top: text2.bottom
             font.pixelSize: 12
             horizontalAlignment: Text.AlignHCenter

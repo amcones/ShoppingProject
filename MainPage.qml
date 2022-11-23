@@ -35,16 +35,38 @@ Window {
         Button {
             id: homeBtn
             property bool isCheck: true
+            property var win:null
             x: 0
             width: 300
             height: 80
             text: "主页"
             anchors.top: logoImage.bottom
             anchors.topMargin: 60
+
+            focus: true
+
             onClicked:{
                 homeBtn.isCheck=true
                 itemManageBtn.isCheck=false
                 userManagerBtn.isCheck=false
+                var component = Qt.createComponent("MainContent.qml")
+                print(component.errorString())
+                if(mainContent!=null)mainContent.destroy()
+                if(itemManageBtn.win!=null){
+                    itemManageBtn.win.destroy()
+                    itemManageBtn.win=null
+                }
+                if(userManagerBtn.win!=null){
+                    userManagerBtn.win.destroy()
+                    userManagerBtn.win=null
+                }
+
+                if(component.status === Component.Ready){
+                    if(homeBtn.win===null){
+                        homeBtn.win = component.createObject(mainWindow,{x:mainContainer.x,y:mainContainer.y})
+                        homeBtn.win.user = account
+                    }
+                }
             }
             contentItem:
                 Text {
@@ -95,7 +117,9 @@ Window {
 
         Button {
             id: itemManageBtn
+            visible: isadmin
             property bool isCheck: false
+            property var win:null
             x: 0
             y: 245
             height: 80
@@ -104,6 +128,21 @@ Window {
                 homeBtn.isCheck=false
                 itemManageBtn.isCheck=true
                 userManagerBtn.isCheck=false
+                var component = Qt.createComponent("ItemManageContent.qml")
+                print(component.errorString())
+                if(mainContent!=null)mainContent.destroy()
+                if(homeBtn.win!=null){
+                    homeBtn.win.destroy()
+                    homeBtn.win=null
+                }
+                if(userManagerBtn.win!=null){
+                    userManagerBtn.win.destroy()
+                    userManagerBtn.win=null
+                }
+
+                if(component.status === Component.Ready){
+                    if(itemManageBtn.win===null)itemManageBtn.win = component.createObject(mainWindow,{x:mainContainer.x,y:mainContainer.y})
+                }
             }
             contentItem:
                 Text {
@@ -155,7 +194,9 @@ Window {
 
         Button {
             id: userManagerBtn
+            visible: isadmin
             property bool isCheck: false
+            property var win:null
             x: 0
             y: 345
             height: 80
@@ -165,6 +206,20 @@ Window {
                 homeBtn.isCheck=false
                 itemManageBtn.isCheck=false
                 userManagerBtn.isCheck=true
+                var component = Qt.createComponent("UserManageContent.qml")
+                print(component.errorString())
+                if(mainContent!=null)mainContent.destroy()
+                if(homeBtn.win!=null){
+                    homeBtn.win.destroy()
+                    homeBtn.win=null
+                }
+                if(itemManageBtn.win!=null){
+                    itemManageBtn.win.destroy()
+                    itemManageBtn.win=null
+                }
+                if(component.status === Component.Ready){
+                    if(userManagerBtn.win===null)userManagerBtn.win = component.createObject(mainWindow,{x:mainContainer.x,y:mainContainer.y})
+                }
             }
             contentItem:
                 Text {
@@ -313,23 +368,27 @@ Window {
 
     }
 
-    MainContent {
-        id: mainContent
+    Item {
+        id: mainContainer
         anchors.left: sideBarRect.right
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.rightMargin: 0
         anchors.leftMargin: 0
-        anchors.bottomMargin: 0
-        anchors.topMargin: 0
+
+        MainContent {
+            id: mainContent
+            user: account
+            anchors.fill: parent
+        }
     }
+
 
 
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:2}D{i:3}D{i:8}D{i:15}D{i:20}D{i:24}
+    D{i:0;formeditorZoom:0.66}D{i:25}D{i:24}
 }
 ##^##*/
